@@ -4,23 +4,6 @@
 <style>
 /* ── Tokens ── */
 :root {
-  --bg:   oklch(9.5%  0.015 262);
-  --sf:   oklch(13.5% 0.018 263);
-  --sf-h: oklch(17%   0.022 264);
-  --ln:   oklch(21%   0.028 264);
-  --ln-h: oklch(38%   0.060 264);
-  --ac:   oklch(64%   0.195 258);
-  --ac-a: oklch(64%   0.195 258 / 0.12);
-  --ac-b: oklch(64%   0.195 258 / 0.26);
-  --sh:   oklch(5%    0.010 262 / 0.24);
-  --t1:   oklch(93%   0.022 270);
-  --t2:   oklch(58%   0.055 268);
-  --t3:   oklch(34%   0.038 268);
-  --f:    -apple-system, "SF Pro Display", BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-  --out:  cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@media (prefers-color-scheme: light) { :root {
   --bg:   oklch(96%   0.006 268);
   --sf:   oklch(99.5% 0.003 270);
   --sf-h: oklch(97%   0.009 268);
@@ -33,6 +16,23 @@
   --t1:   oklch(10%   0.022 268);
   --t2:   oklch(40%   0.045 268);
   --t3:   oklch(65%   0.028 268);
+  --f:    -apple-system, "SF Pro Display", BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --out:  cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-color-scheme: dark) { :root {
+  --bg:   oklch(9.5%  0.015 262);
+  --sf:   oklch(13.5% 0.018 263);
+  --sf-h: oklch(17%   0.022 264);
+  --ln:   oklch(21%   0.028 264);
+  --ln-h: oklch(38%   0.060 264);
+  --ac:   oklch(64%   0.195 258);
+  --ac-a: oklch(64%   0.195 258 / 0.12);
+  --ac-b: oklch(64%   0.195 258 / 0.26);
+  --sh:   oklch(5%    0.010 262 / 0.24);
+  --t1:   oklch(93%   0.022 270);
+  --t2:   oklch(58%   0.055 268);
+  --t3:   oklch(34%   0.038 268);
 }}
 
 :root[data-theme="dark"] {
@@ -258,7 +258,7 @@ body {
     <div class="brand-mark" aria-hidden="true">M</div>
     <span class="brand-name">Mobic</span>
   </div>
-  <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Toggle colour theme">Light</button>
+  <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Toggle colour theme">Dark</button>
 </nav>
 
 <!-- Header -->
