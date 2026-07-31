@@ -424,6 +424,34 @@ body {
   letter-spacing: -0.015em; color: var(--t1);
 }
 
+.lang-toggle {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.9rem 1.25rem 0;
+}
+
+.lang-btn {
+  font-family: var(--f);
+  font-size: 0.82rem;
+  font-weight: 650;
+  padding: 0.38rem 1.1rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--ln);
+  background: transparent;
+  color: var(--t2);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.lang-btn.active {
+  background: var(--ac);
+  color: #fff;
+  border-color: var(--ac);
+}
+.lang-btn:not(.active):hover {
+  border-color: var(--ac);
+  color: var(--ac);
+}
+
 .download-btn {
   display: inline-flex;
   align-items: center;
@@ -503,25 +531,30 @@ body {
 
   <p class="foot-note">Placeholder QR codes. Replace the three link URLs in the HTML to generate real scannable codes.</p>
 
-  <!-- Video players -->
+  <!-- Video player with language toggle -->
   <div class="videos-wrap">
-
-    <!-- English Video -->
     <div class="video-block">
+
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-en" onclick="switchLang('en')">English</button>
+        <button class="lang-btn"        id="btn-hi" onclick="switchLang('hi')">Hindi</button>
+      </div>
+
       <div class="video-player">
-        <iframe
+        <iframe id="video-frame"
           src="https://drive.google.com/file/d/12eQzKnx4zO_hgn7uICxuq3mKpEYjz3Cd/preview"
           allow="autoplay"
           allowfullscreen
-          title="Session Recording – English">
+          title="Session Recording">
         </iframe>
       </div>
+
       <div class="video-footer">
         <div class="video-label">
-          <div class="v-cat">English</div>
+          <div class="v-cat" id="video-lang-label">English</div>
           <div class="v-title">Session Recording</div>
         </div>
-        <a class="download-btn"
+        <a class="download-btn" id="video-dl-btn"
            href="https://drive.google.com/uc?export=download&id=12eQzKnx4zO_hgn7uICxuq3mKpEYjz3Cd"
            target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -532,35 +565,8 @@ body {
           Download
         </a>
       </div>
-    </div>
 
-    <!-- Hindi Video -->
-    <div class="video-block">
-      <div class="video-player">
-        <video controls preload="metadata">
-          <source src="HINDI_VIDEO_URL" type="video/mp4">
-          Your browser does not support the video element.
-        </video>
-      </div>
-      <div class="video-footer">
-        <div class="video-label">
-          <div class="v-cat">Hindi</div>
-          <div class="v-title">Session Recording</div>
-        </div>
-        <a class="download-btn"
-           href="HINDI_VIDEO_URL"
-           download="session-recording-hindi.mp4"
-           target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-            <polyline points="7 10 12 15 17 10"/>
-            <line x1="12" y1="15" x2="12" y2="3"/>
-          </svg>
-          Download
-        </a>
-      </div>
     </div>
-
   </div>
 
   <!-- Webinar Schedule Section -->
@@ -617,6 +623,29 @@ body {
 </main>
 
 <script>
+/* ── Video language toggle ── */
+var VIDEOS = {
+  en: {
+    preview:  'https://drive.google.com/file/d/12eQzKnx4zO_hgn7uICxuq3mKpEYjz3Cd/preview',
+    download: 'https://drive.google.com/uc?export=download&id=12eQzKnx4zO_hgn7uICxuq3mKpEYjz3Cd',
+    label: 'English'
+  },
+  hi: {
+    preview:  'https://drive.google.com/file/d/12eQzKnx4zO_hgn7uICxuq3mKpEYjz3Cd/preview',
+    download: 'https://drive.google.com/uc?export=download&id=12eQzKnx4zO_hgn7uICxuq3mKpEYjz3Cd',
+    label: 'Hindi'
+  }
+};
+
+function switchLang(lang) {
+  var v = VIDEOS[lang];
+  document.getElementById('video-frame').src = v.preview;
+  document.getElementById('video-dl-btn').href = v.download;
+  document.getElementById('video-lang-label').textContent = v.label;
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-hi').classList.toggle('active', lang === 'hi');
+}
+
 /* ── Theme ── */
 (function () {
   var s = localStorage.getItem('mobic-t');
