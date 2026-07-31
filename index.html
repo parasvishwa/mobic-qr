@@ -244,6 +244,127 @@ body {
   flex-shrink: 0;
 }
 
+/* ── Webinar section ── */
+.webinar-section {
+  max-width: 860px;
+  margin: 2.5rem auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.webinar-card {
+  width: 100%;
+  background: #2D2F8F;
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem 1.5rem;
+  text-align: center;
+}
+
+.webinar-title {
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  font-weight: 800;
+  color: #F5A623;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.3rem;
+  line-height: 1.2;
+}
+
+.webinar-subtitle {
+  font-size: 0.9rem;
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.live-badge {
+  display: inline-block;
+  background: #22C55E;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-style: italic;
+  padding: 0.3rem 1.1rem;
+  border-radius: 999px;
+  margin-bottom: 1.25rem;
+}
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1.5px solid #22C55E;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 560px) {
+  .schedule-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.schedule-day {
+  padding: 0.75rem 0.5rem;
+  border-right: 1.5px dashed #4B5CB8;
+}
+.schedule-day:last-child { border-right: none; }
+
+@media (max-width: 560px) {
+  .schedule-day:nth-child(2) { border-right: none; }
+  .schedule-day:nth-child(1),
+  .schedule-day:nth-child(2) { border-bottom: 1.5px dashed #4B5CB8; }
+}
+
+.day-name {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #F5A623;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.01em;
+}
+
+.day-time {
+  font-size: 0.72rem;
+  color: #fff;
+  line-height: 1.9;
+}
+
+.meeting-id {
+  font-size: 0.82rem;
+  color: #F5A623;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+
+.join-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.75rem 2rem;
+  background: var(--ac);
+  border-radius: 999px;
+  transition: opacity 0.15s ease, transform 0.12s var(--out);
+  letter-spacing: 0.01em;
+  box-shadow: 0 4px 16px oklch(48% 0.245 258 / 0.30);
+}
+.join-btn:hover  { opacity: 0.85; }
+.join-btn:active { transform: scale(0.97); }
+.join-btn:focus-visible { outline: 2px solid var(--ac); outline-offset: 3px; }
+.join-btn svg {
+  width: 16px; height: 16px;
+  stroke: currentColor; fill: none;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+
 /* ── Footer note ── */
 .foot-note {
   max-width: 860px;
@@ -427,6 +548,58 @@ body {
       </a>
     </div>
   </div>
+
+  <!-- Webinar Schedule Section -->
+  <section class="webinar-section">
+    <div class="webinar-card">
+      <div class="webinar-title">Learn Option Scalping Strategies</div>
+      <div class="webinar-subtitle">16 Sessions in a week</div>
+      <div class="live-badge">Live Webinar</div>
+
+      <div class="schedule-grid">
+        <div class="schedule-day">
+          <div class="day-name">MON – FRI</div>
+          <div class="day-time">
+            1:00 PM – 2:00 PM<br>
+            6:30 PM – 7:30 PM
+          </div>
+        </div>
+        <div class="schedule-day">
+          <div class="day-name">TUESDAY</div>
+          <div class="day-time">
+            10:00 AM – 11:00 AM<br>
+            11:30 AM – 12:30 PM<br>
+            1:00 PM – 2:00 PM<br>
+            2:30 PM – 3:30 PM
+          </div>
+        </div>
+        <div class="schedule-day">
+          <div class="day-name">SATURDAY</div>
+          <div class="day-time">
+            11:00 AM – 1:00 PM<br>
+            4:00 PM – 6:00 PM
+          </div>
+        </div>
+        <div class="schedule-day">
+          <div class="day-name">SUNDAY</div>
+          <div class="day-time">
+            11:00 AM – 1:00 PM
+          </div>
+        </div>
+      </div>
+
+      <div class="meeting-id">Meeting ID: 953 9015 4645</div>
+    </div>
+
+    <a class="join-btn"
+       href="https://zoom.us/webinar/register/WN_neYORhzYRlS_263YA-yE6A"
+       target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.845v6.31a1 1 0 0 1-1.447.914L15 14M3 8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z"/>
+      </svg>
+      Click to Join Live Webinar
+    </a>
+  </section>
 </main>
 
 <script>
