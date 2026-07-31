@@ -144,7 +144,7 @@ body {
 /* ── Image carousel ── */
 .gallery-section {
   max-width: 860px;
-  margin: 2rem auto 0;
+  margin: 0 auto 0;
 }
 
 .gallery-header {
@@ -276,7 +276,7 @@ body {
 /* ── Webinar section ── */
 .webinar-section {
   max-width: 860px;
-  margin: 2.5rem auto 0;
+  margin: 0 auto 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -397,14 +397,65 @@ body {
 /* ── Footer note ── */
 .foot-note {
   max-width: 860px;
-  margin: 1.35rem auto 0;
+  margin: 3rem auto 0;
   font-size: 0.69rem; color: var(--t3); line-height: 1.58;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+/* ── Section intro row (step numbering) ── */
+.section-intro {
+  max-width: 860px;
+  margin: 3.25rem auto 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.section-intro.first { margin-top: 0; }
+
+.step-pill {
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ac);
+  background: var(--ac-a);
+  border: 1px solid var(--ac-b);
+  border-radius: 6px;
+  padding: 0.28rem 0.65rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.step-rule {
+  height: 1px;
+  background: var(--ln);
+  flex: 1;
+  min-width: 0;
+}
+
+.step-title {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--t3);
+  flex-shrink: 0;
+}
+
+/* ── Head accent bar ── */
+.head-accent {
+  width: 2.5rem;
+  height: 3px;
+  background: linear-gradient(90deg, var(--ac) 0%, oklch(64% 0.195 258 / 0.3) 100%);
+  border-radius: 2px;
+  margin: 1.2rem 0 0.7rem;
 }
 
 /* ── Video section ── */
 .videos-wrap {
   max-width: 860px;
-  margin: 2.5rem auto 0;
+  margin: 0 auto 0;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -516,11 +567,19 @@ body {
 <!-- Header -->
 <header class="head">
   <h1>Your learning<br>resources.</h1>
-  <p>Watch the session recording, browse brochures, and join the live webinar below.</p>
+  <div class="head-accent"></div>
+  <p>Watch the session recording, join the live webinar, and preview your QR codes — all in one place.</p>
 </header>
 
 <!-- Content -->
 <main>
+
+  <!-- Section intro: Video -->
+  <div class="section-intro first">
+    <span class="step-pill">01</span>
+    <span class="step-rule"></span>
+    <span class="step-title">Session Recording</span>
+  </div>
 
   <!-- Video player with language toggle -->
   <div class="videos-wrap">
@@ -558,6 +617,13 @@ body {
       </div>
 
     </div>
+  </div>
+
+  <!-- Section intro: Webinar -->
+  <div class="section-intro">
+    <span class="step-pill">02</span>
+    <span class="step-rule"></span>
+    <span class="step-title">Live Webinar</span>
   </div>
 
   <!-- Webinar Schedule Section -->
@@ -612,12 +678,18 @@ body {
     </a>
   </section>
 
+  <!-- Section intro: QR Preview -->
+  <div class="section-intro">
+    <span class="step-pill">03</span>
+    <span class="step-rule"></span>
+    <span class="step-title">QR Preview</span>
+  </div>
+
   <!-- Image Gallery Carousel -->
   <section class="gallery-section">
     <div class="gallery-header">
       <div class="gallery-title-wrap">
-        <span class="section-label">Brochures</span>
-        <h2 class="section-heading">Motilal Oswal Resources</h2>
+        <h2 class="section-heading">How Your QR Will Look</h2>
       </div>
       <div class="gallery-controls">
         <div class="lang-toggle">
@@ -729,7 +801,7 @@ function galleryBuild(lang) {
     slide.className = 'carousel-slide';
     var img = document.createElement('img');
     img.src = src;
-    img.alt = 'Brochure ' + (i + 1);
+    img.alt = 'QR Preview ' + (i + 1);
     img.loading = i === 0 ? 'eager' : 'lazy';
     slide.appendChild(img);
     track.appendChild(slide);
@@ -774,3 +846,5 @@ function gallerySwitchLang(lang) {
 galleryBuild('en');
 galleryResetTimer();
 </script>
+
+<footer class="foot-note">Powered by Mobic &middot; Resources by Motilal Oswal</footer>
