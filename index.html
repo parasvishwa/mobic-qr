@@ -141,107 +141,116 @@ body {
   max-width: 360px;
 }
 
-/* ── Grid ── */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.875rem;
+/* ── Image carousel ── */
+.gallery-section {
   max-width: 860px;
-  margin: 0 auto;
-}
-@media (max-width: 620px) {
-  .grid { grid-template-columns: 1fr; max-width: 310px; }
-}
-@media (min-width: 621px) and (max-width: 760px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
-  .card:last-child { grid-column: 1 / -1; max-width: 272px; justify-self: center; }
+  margin: 2rem auto 0;
 }
 
-/* ── Card ── */
-.card {
+.gallery-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.9rem;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.gallery-title {
+  font-size: 0.82rem; font-weight: 750;
+  letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--t3);
+}
+
+.gallery-counter {
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--t3);
+  font-variant-numeric: tabular-nums;
+}
+
+.carousel-wrap {
+  position: relative;
   background: var(--sf);
   border: 1px solid var(--ln);
   border-radius: 16px;
-  padding: 1.45rem 1.35rem 1.55rem;
-  display: flex; flex-direction: column;
-  transition:
-    border-color 0.22s ease,
-    background   0.22s ease,
-    transform    0.26s var(--out),
-    box-shadow   0.26s ease;
-}
-.card:hover {
-  border-color: var(--ln-h);
-  background: var(--sf-h);
-  transform: translateY(-3px);
-  box-shadow: 0 18px 44px var(--sh);
-}
-@media (prefers-reduced-motion: reduce) {
-  .card { transition: border-color 0.2s ease, background 0.2s ease; }
-  .card:hover { transform: none; box-shadow: none; }
+  overflow: hidden;
 }
 
-/* Entrance — class added by JS so content is visible without JS */
-.card.entering {
-  animation: rise 0.6s var(--out) both;
-}
-@keyframes rise {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .card.entering { animation: none; }
+.carousel-track-outer {
+  overflow: hidden;
 }
 
-/* ── Card internals ── */
-.card-cat {
-  font-size: 0.62rem; font-weight: 750;
-  letter-spacing: 0.11em; text-transform: uppercase;
-  color: var(--t3); margin-bottom: 1rem;
+.carousel-track {
+  display: flex;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
 }
 
-.qr-box {
-  background: #fff;
-  border-radius: 9px;
-  padding: 10px;
-  margin-bottom: 1.35rem;
+.carousel-slide {
+  flex: 0 0 100%;
   line-height: 0;
 }
-.qr-box canvas {
-  display: block; width: 100%; height: auto;
-  aspect-ratio: 1 / 1; image-rendering: pixelated;
+
+.carousel-slide img {
+  width: 100%;
+  display: block;
+  max-height: 520px;
+  object-fit: contain;
+  background: #0a0e1a;
 }
 
-.card-name {
-  font-size: 0.94rem; font-weight: 660;
-  letter-spacing: -0.015em; line-height: 1.28;
-  color: var(--t1); margin-bottom: 0.3rem;
-}
-.card-desc {
-  font-size: 0.78rem; color: var(--t2);
-  line-height: 1.57; margin-bottom: 1.1rem;
-  flex: 1;
+.carousel-slide .slide-placeholder {
+  width: 100%;
+  height: 420px;
+  background: linear-gradient(135deg, #0d1b3e 0%, #1a2a5e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.05em;
 }
 
-.card-cta {
-  display: inline-flex; align-items: center; gap: 0.35rem;
-  font-size: 0.76rem; font-weight: 660;
-  color: var(--ac); text-decoration: none;
-  padding: 0.43rem 0.87rem;
-  background: var(--ac-a);
-  border: 1px solid var(--ac-b);
-  border-radius: 7px; align-self: flex-start;
-  transition: opacity 0.15s ease, transform 0.12s var(--out);
-  white-space: nowrap;
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: oklch(5% 0.01 262 / 0.55);
+  color: #fff;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background 0.15s ease, transform 0.12s var(--out);
+  z-index: 2;
 }
-.card-cta:hover  { opacity: 0.68; }
-.card-cta:active { transform: scale(0.97); }
-.card-cta:focus-visible { outline: 2px solid var(--ac); outline-offset: 2px; }
-.card-cta svg {
-  width: 11px; height: 11px;
-  stroke: currentColor; fill: none;
-  stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
-  flex-shrink: 0;
+.carousel-btn:hover  { background: oklch(5% 0.01 262 / 0.80); }
+.carousel-btn:active { transform: translateY(-50%) scale(0.93); }
+.carousel-btn svg    { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.carousel-btn.prev  { left: 10px; }
+.carousel-btn.next  { right: 10px; }
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 0.75rem 0;
+}
+.carousel-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--ln-h);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.carousel-dot.active {
+  background: var(--ac);
+  transform: scale(1.3);
 }
 
 /* ── Webinar section ── */
@@ -486,50 +495,12 @@ body {
 
 <!-- Header -->
 <header class="head">
-  <h1>Scan to access<br>today's resources.</h1>
-  <p>Scan any code below, or tap the link to open directly in your browser.</p>
+  <h1>Your learning<br>resources.</h1>
+  <p>Watch the session recording, browse brochures, and join the live webinar below.</p>
 </header>
 
-<!-- Cards -->
+<!-- Content -->
 <main>
-  <div class="grid">
-
-    <article class="card">
-      <div class="card-cat">Video</div>
-      <div class="qr-box"><canvas id="qr-video" width="200" height="200"></canvas></div>
-      <div class="card-name">Session Recording</div>
-      <div class="card-desc">Stream or download the full session recording.</div>
-      <a class="card-cta" href="https://example.com/video" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Watch Video
-      </a>
-    </article>
-
-    <article class="card">
-      <div class="card-cat">Webinar</div>
-      <div class="qr-box"><canvas id="qr-zoom" width="200" height="200"></canvas></div>
-      <div class="card-name">Zoom Session</div>
-      <div class="card-desc">Join the live session or access the webinar replay.</div>
-      <a class="card-cta" href="https://zoom.us/j/example" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="13" height="10" rx="2"/><polyline points="17 7 22 5 22 19 17 17"/></svg>
-        Join Webinar
-      </a>
-    </article>
-
-    <article class="card">
-      <div class="card-cat">Files</div>
-      <div class="qr-box"><canvas id="qr-brochure" width="200" height="200"></canvas></div>
-      <div class="card-name">Brochure + Images</div>
-      <div class="card-desc">Download the event brochure and full image pack.</div>
-      <a class="card-cta" href="https://example.com/brochure" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
-        Download Files
-      </a>
-    </article>
-
-  </div>
-
-  <p class="foot-note">Placeholder QR codes. Replace the three link URLs in the HTML to generate real scannable codes.</p>
 
   <!-- Video player with language toggle -->
   <div class="videos-wrap">
@@ -568,6 +539,35 @@ body {
 
     </div>
   </div>
+
+  <!-- Image Gallery Carousel -->
+  <section class="gallery-section">
+    <div class="gallery-header">
+      <span class="gallery-title">Brochures</span>
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="gbtn-en" onclick="gallerySwitchLang('en')">English</button>
+        <button class="lang-btn"        id="gbtn-hi" onclick="gallerySwitchLang('hi')">Hindi</button>
+      </div>
+      <span class="gallery-counter"><span id="g-cur">1</span> / <span id="g-tot">7</span></span>
+    </div>
+
+    <div class="carousel-wrap">
+      <div class="carousel-track-outer">
+        <div class="carousel-track" id="gallery-track">
+          <!-- slides injected by JS -->
+        </div>
+      </div>
+
+      <button class="carousel-btn prev" onclick="galleryMove(-1)" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="carousel-btn next" onclick="galleryMove(1)" aria-label="Next">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+
+      <div class="carousel-dots" id="gallery-dots"></div>
+    </div>
+  </section>
 
   <!-- Webinar Schedule Section -->
   <section class="webinar-section">
@@ -665,90 +665,87 @@ function toggleTheme() {
   document.getElementById('theme-btn').textContent = n === 'dark' ? 'Light' : 'Dark';
 }
 
-/* ── Card entrance (JS-gated so content is always visible without JS) ── */
-(function () {
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  document.querySelectorAll('.card').forEach(function (card, i) {
-    card.style.animationDelay = (i * 0.10) + 's';
-    card.classList.add('entering');
+
+/* ── Gallery carousel ── */
+var GALLERY = {
+  en: [
+    'images/en-1.jpg',
+    'images/en-2.jpg',
+    'images/en-3.jpg',
+    'images/en-4.jpg',
+    'images/en-5.jpg',
+    'images/en-6.jpg',
+    'images/en-7.jpg'
+  ],
+  hi: [
+    'images/hi-1.jpg',
+    'images/hi-2.jpg',
+    'images/hi-3.jpg',
+    'images/hi-4.jpg',
+    'images/hi-5.jpg',
+    'images/hi-6.jpg',
+    'images/hi-7.jpg'
+  ]
+};
+
+var gLang = 'en';
+var gIndex = 0;
+var gTimer = null;
+
+function galleryBuild(lang) {
+  var track = document.getElementById('gallery-track');
+  var dots  = document.getElementById('gallery-dots');
+  if (!track || !dots) return;
+  var imgs = GALLERY[lang];
+  track.innerHTML = '';
+  dots.innerHTML  = '';
+  imgs.forEach(function(src, i) {
+    var slide = document.createElement('div');
+    slide.className = 'carousel-slide';
+    var img = document.createElement('img');
+    img.src = src;
+    img.alt = 'Brochure ' + (i + 1);
+    img.loading = i === 0 ? 'eager' : 'lazy';
+    slide.appendChild(img);
+    track.appendChild(slide);
+
+    var dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+    dot.onclick = (function(idx) { return function() { galleryGoTo(idx); }; })(i);
+    dots.appendChild(dot);
   });
-}());
-
-/* ── QR placeholder canvas ── */
-function drawQR(id, seed) {
-  var canvas = document.getElementById(id);
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d');
-  var PX = 200, N = 29, C = PX / N;
-
-  /* xorshift32 seeded RNG */
-  var s = (seed >>> 0) | 1;
-  function rng() {
-    s ^= s << 13; s ^= s >>> 17; s ^= s << 5;
-    return (s >>> 0) / 4294967295;
-  }
-
-  /* Fill white base */
-  ctx.fillStyle = '#fff';
-  ctx.fillRect(0, 0, PX, PX);
-
-  /* Draw one module cell */
-  function cell(col, row, dark) {
-    ctx.fillStyle = dark ? '#0B0D16' : '#fff';
-    var x = Math.round(col * C),   y = Math.round(row * C);
-    var w = Math.round((col+1)*C) - x;
-    var h = Math.round((row+1)*C) - y;
-    ctx.fillRect(x, y, w, h);
-  }
-
-  /* 7x7 finder pattern at grid offset (ox, oy) */
-  function finder(ox, oy) {
-    for (var r = 0; r < 7; r++)
-      for (var c = 0; c < 7; c++) {
-        var out = r===0||r===6||c===0||c===6;
-        var ctr = r>=2&&r<=4&&c>=2&&c<=4;
-        cell(ox+c, oy+r, out||ctr);
-      }
-  }
-
-  /* Three finder patterns */
-  finder(0,     0);      /* top-left  */
-  finder(N-7,   0);      /* top-right */
-  finder(0,     N-7);    /* bot-left  */
-
-  /* Timing strips */
-  for (var i = 8; i <= N-9; i++) {
-    cell(i, 6, i%2===0);
-    cell(6, i, i%2===0);
-  }
-
-  /* Single alignment pattern (version 3, center at col 20 row 20) */
-  for (var ar = 0; ar < 5; ar++)
-    for (var ac = 0; ac < 5; ac++) {
-      var out = ar===0||ar===4||ac===0||ac===4;
-      cell(20+ac, 20+ar, out||(ar===2&&ac===2));
-    }
-
-  /* Mandatory dark module */
-  cell(8, N-8, true);
-
-  /* Seeded random data modules */
-  for (var row = 0; row < N; row++) {
-    for (var col = 0; col < N; col++) {
-      /* Skip finder zones + separators */
-      if (row<9  && col<9)    continue;
-      if (row<9  && col>=N-8) continue;
-      if (row>=N-8 && col<9)  continue;
-      /* Skip timing strips */
-      if (row===6 || col===6) continue;
-      /* Skip alignment zone */
-      if (row>=19 && row<=25 && col>=19 && col<=25) continue;
-      if (rng() > 0.48) cell(col, row, true);
-    }
-  }
+  document.getElementById('g-tot').textContent = imgs.length;
 }
 
-drawQR('qr-video',    0x3D9A2F);
-drawQR('qr-zoom',     0x9B3DE8);
-drawQR('qr-brochure', 0x2A6FC4);
+function galleryGoTo(idx) {
+  var imgs = GALLERY[gLang];
+  gIndex = (idx + imgs.length) % imgs.length;
+  var track = document.getElementById('gallery-track');
+  if (track) track.style.transform = 'translateX(-' + (gIndex * 100) + '%)';
+  document.getElementById('g-cur').textContent = gIndex + 1;
+  document.querySelectorAll('.carousel-dot').forEach(function(d, i) {
+    d.classList.toggle('active', i === gIndex);
+  });
+  galleryResetTimer();
+}
+
+function galleryMove(dir) { galleryGoTo(gIndex + dir); }
+
+function galleryResetTimer() {
+  if (gTimer) clearInterval(gTimer);
+  gTimer = setInterval(function() { galleryGoTo(gIndex + 1); }, 4000);
+}
+
+function gallerySwitchLang(lang) {
+  gLang = lang;
+  gIndex = 0;
+  galleryBuild(lang);
+  galleryGoTo(0);
+  document.getElementById('gbtn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('gbtn-hi').classList.toggle('active', lang === 'hi');
+}
+
+galleryBuild('en');
+galleryResetTimer();
 </script>
