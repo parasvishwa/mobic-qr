@@ -285,7 +285,8 @@ body {
 
 .webinar-card {
   width: 100%;
-  background: #2D2F8F;
+  background: var(--sf);
+  border: 1px solid var(--ln);
   border-radius: 16px;
   padding: 1.75rem 1.5rem 1.5rem;
   text-align: center;
@@ -294,7 +295,7 @@ body {
 .webinar-title {
   font-size: clamp(1.1rem, 3vw, 1.4rem);
   font-weight: 800;
-  color: #F5A623;
+  color: var(--t1);
   letter-spacing: -0.02em;
   margin-bottom: 0.3rem;
   line-height: 1.2;
@@ -302,14 +303,14 @@ body {
 
 .webinar-subtitle {
   font-size: 0.9rem;
-  color: #fff;
+  color: var(--t2);
   font-weight: 500;
   margin-bottom: 1rem;
 }
 
 .live-badge {
   display: inline-block;
-  background: #22C55E;
+  background: var(--ac);
   color: #fff;
   font-size: 0.8rem;
   font-weight: 700;
@@ -323,7 +324,7 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
-  border: 1.5px solid #22C55E;
+  border: 1px solid var(--ln);
   border-radius: 10px;
   overflow: hidden;
   text-align: center;
@@ -338,35 +339,34 @@ body {
 
 .schedule-day {
   padding: 0.75rem 0.5rem;
-  border-right: 1.5px dashed #4B5CB8;
+  border-right: 1px dashed var(--ln);
 }
 .schedule-day:last-child { border-right: none; }
 
 @media (max-width: 560px) {
   .schedule-day:nth-child(2) { border-right: none; }
   .schedule-day:nth-child(1),
-  .schedule-day:nth-child(2) { border-bottom: 1.5px dashed #4B5CB8; }
+  .schedule-day:nth-child(2) { border-bottom: 1px dashed var(--ln); }
 }
 
 .day-name {
   font-size: 0.78rem;
   font-weight: 700;
-  color: #F5A623;
+  color: var(--ac);
   margin-bottom: 0.5rem;
   letter-spacing: 0.01em;
 }
 
 .day-time {
   font-size: 0.72rem;
-  color: #fff;
+  color: var(--t2);
   line-height: 1.9;
 }
 
 .meeting-id {
   font-size: 0.82rem;
-  color: #F5A623;
-  font-weight: 700;
-  font-style: italic;
+  color: var(--t2);
+  font-weight: 600;
   letter-spacing: 0.01em;
 }
 
