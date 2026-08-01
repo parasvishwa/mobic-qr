@@ -442,6 +442,28 @@ body {
   color: var(--t2);
   font-weight: 600;
   letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.42rem;
+}
+.meeting-id svg {
+  width: 13px; height: 13px;
+  stroke: var(--t3); fill: none;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.gallery-heading-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.gallery-heading-row svg {
+  width: 20px; height: 20px;
+  stroke: var(--ac); fill: none;
+  stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+  flex-shrink: 0;
 }
 
 .join-btn {
@@ -514,6 +536,15 @@ body {
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--t3);
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+}
+.step-title svg {
+  width: 10px; height: 10px;
+  stroke: currentColor; fill: none;
+  stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
   flex-shrink: 0;
 }
 
@@ -595,6 +626,15 @@ body {
   color: var(--t2);
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.lang-btn svg {
+  width: 12px; height: 12px;
+  stroke: currentColor; fill: none;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  flex-shrink: 0;
 }
 .lang-btn.active {
   background: var(--ac);
@@ -642,7 +682,7 @@ body {
 <header class="head">
   <h1>Your learning<br>resources.</h1>
   <div class="head-accent"></div>
-  <p>Watch the session recording, join the live webinar, and preview your QR codes — all in one place.</p>
+  <p>Watch the session recording, join the live webinar, and preview your QR codes. All in one place.</p>
 </header>
 
 <!-- Content -->
@@ -652,7 +692,7 @@ body {
   <div class="section-intro first">
     <span class="step-pill">01</span>
     <span class="step-rule"></span>
-    <span class="step-title">MO First QR Lead Generation</span>
+    <span class="step-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.845v6.31a1 1 0 0 1-1.447.914L15 14M3 8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z"/></svg>MO First QR Lead Generation</span>
   </div>
 
   <!-- Video player with language toggle -->
@@ -660,8 +700,8 @@ body {
     <div class="video-block">
 
       <div class="lang-toggle">
-        <button class="lang-btn active" id="btn-en" onclick="switchLang('en')">English</button>
-        <button class="lang-btn"        id="btn-hi" onclick="switchLang('hi')">Hindi</button>
+        <button class="lang-btn active" id="btn-en" onclick="switchLang('en')"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>English</button>
+        <button class="lang-btn"        id="btn-hi" onclick="switchLang('hi')"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Hindi</button>
       </div>
 
       <div class="video-player">
@@ -693,7 +733,7 @@ body {
   <div class="section-intro">
     <span class="step-pill">02</span>
     <span class="step-rule"></span>
-    <span class="step-title">Live Webinar</span>
+    <span class="step-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>Live Webinar</span>
   </div>
 
   <!-- Webinar Schedule Section -->
@@ -772,7 +812,7 @@ body {
         </div>
       </div>
 
-      <div class="meeting-id">Meeting ID: 953 9015 4645</div>
+      <div class="meeting-id"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>Meeting ID: 953 9015 4645</div>
     </div>
 
     <a class="join-btn"
@@ -789,19 +829,19 @@ body {
   <div class="section-intro">
     <span class="step-pill">03</span>
     <span class="step-rule"></span>
-    <span class="step-title">QR Preview</span>
+    <span class="step-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><line x1="3" y1="12" x2="21" y2="12"/></svg>QR Preview</span>
   </div>
 
   <!-- Image Gallery Carousel -->
   <section class="gallery-section">
     <div class="gallery-header">
       <div class="gallery-title-wrap">
-        <h2 class="section-heading">How Your QR Will Look</h2>
+        <div class="gallery-heading-row"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="5" height="5" rx="1"/><rect x="16" y="3" width="5" height="5" rx="1"/><rect x="3" y="16" width="5" height="5" rx="1"/><path d="M16 16h2v2h-2zM20 16v2M20 20h-4M16 20v-2M20 20v-1"/></svg><h2 class="section-heading">How Your QR Will Look</h2></div>
       </div>
       <div class="gallery-controls">
         <div class="lang-toggle">
-          <button class="lang-btn active" id="gbtn-en" onclick="gallerySwitchLang('en')">English</button>
-          <button class="lang-btn"        id="gbtn-hi" onclick="gallerySwitchLang('hi')">Hindi</button>
+          <button class="lang-btn active" id="gbtn-en" onclick="gallerySwitchLang('en')"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>English</button>
+          <button class="lang-btn"        id="gbtn-hi" onclick="gallerySwitchLang('hi')"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Hindi</button>
         </div>
         <span class="gallery-counter"><span id="g-cur">1</span> / <span id="g-tot">7</span></span>
       </div>
