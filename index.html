@@ -600,10 +600,6 @@ body {
       </div>
 
       <div class="video-footer">
-        <div class="video-label">
-          <div class="v-cat" id="video-lang-label">English</div>
-          <div class="v-title">Session Recording</div>
-        </div>
         <a class="download-btn" id="video-dl-btn"
            href="https://drive.google.com/uc?export=download&id=12eQzKnx4zO_hgn7uICxuq3mKpEYjz3Cd"
            target="_blank" rel="noopener">
@@ -728,8 +724,8 @@ var VIDEOS = {
     label: 'English'
   },
   hi: {
-    preview:  'https://drive.google.com/file/d/12eQzKnx4zO_hgn7uICxuq3mKpEYjz3Cd/preview',
-    download: 'https://drive.google.com/uc?export=download&id=12eQzKnx4zO_hgn7uICxuq3mKpEYjz3Cd',
+    preview:  'https://drive.google.com/file/d/1Y8HhWGWYAepTwC2OhFDC6v44O4MTFTqk/preview',
+    download: 'https://drive.google.com/uc?export=download&id=1Y8HhWGWYAepTwC2OhFDC6v44O4MTFTqk',
     label: 'Hindi'
   }
 };
@@ -738,7 +734,6 @@ function switchLang(lang) {
   var v = VIDEOS[lang];
   document.getElementById('video-frame').src = v.preview;
   document.getElementById('video-dl-btn').href = v.download;
-  document.getElementById('video-lang-label').textContent = v.label;
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
   document.getElementById('btn-hi').classList.toggle('active', lang === 'hi');
 }
