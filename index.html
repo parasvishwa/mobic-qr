@@ -324,7 +324,7 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
-  border: 1px solid var(--ln);
+  border: 1.5px solid var(--ln-h);
   border-radius: 10px;
   overflow: hidden;
   text-align: center;
@@ -338,15 +338,21 @@ body {
 }
 
 .schedule-day {
-  padding: 0.75rem 0.5rem;
-  border-right: 1px dashed var(--ln);
+  padding: 0.85rem 0.6rem;
+  border-right: 1.5px solid var(--ln-h);
 }
 .schedule-day:last-child { border-right: none; }
 
 @media (max-width: 560px) {
   .schedule-day:nth-child(2) { border-right: none; }
   .schedule-day:nth-child(1),
-  .schedule-day:nth-child(2) { border-bottom: 1px dashed var(--ln); }
+  .schedule-day:nth-child(2) { border-bottom: 1.5px solid var(--ln-h); }
+}
+
+.schedule-day .day-name {
+  padding-bottom: 0.55rem;
+  margin-bottom: 0.55rem;
+  border-bottom: 1.5px solid var(--ln-h);
 }
 
 .day-name {
