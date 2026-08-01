@@ -507,7 +507,7 @@ body {
 .lang-toggle {
   display: flex;
   gap: 0.5rem;
-  padding: 0.9rem 1.25rem 0;
+  padding: 0.9rem 1.25rem 0.9rem;
 }
 
 .lang-btn {
@@ -746,9 +746,8 @@ function switchLang(lang) {
 /* ── Theme ── */
 (function () {
   var s = localStorage.getItem('mobic-t');
-  var sys = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  var active = s || sys;
-  if (s) document.documentElement.setAttribute('data-theme', s);
+  var active = s || 'dark';
+  document.documentElement.setAttribute('data-theme', active);
   document.getElementById('theme-btn').textContent = active === 'dark' ? 'Light' : 'Dark';
 }());
 
