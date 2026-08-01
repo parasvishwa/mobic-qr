@@ -355,34 +355,32 @@ body {
 
 .webinar-stats {
   display: flex;
-  align-items: stretch;
-  border: 1px solid var(--ln);
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 0.9rem 0 1.4rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin: 0.9rem 0 1.5rem;
 }
 
 .webinar-stat {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.32rem;
-  padding: 0.8rem 0.4rem;
-  border-right: 1px solid var(--ln);
-  font-size: 0.72rem;
-  font-weight: 620;
+  gap: 0.4rem;
+  padding: 0.42rem 0.9rem;
+  background: var(--ac-a);
+  border: 1px solid var(--ac-b);
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 640;
   color: var(--t2);
-  line-height: 1.2;
+  white-space: nowrap;
 }
-.webinar-stat:last-child { border-right: none; }
 
 .webinar-stat svg {
-  width: 17px; height: 17px;
+  width: 13px; height: 13px;
   stroke: var(--ac);
   fill: none;
-  stroke-width: 1.8;
+  stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
   flex-shrink: 0;
